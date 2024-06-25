@@ -17,6 +17,7 @@ class Arena {
  public:
   Arena();
 
+  // 禁止拷贝构造与赋值构造
   Arena(const Arena&) = delete;
   Arena& operator=(const Arena&) = delete;
 
@@ -35,6 +36,7 @@ class Arena {
   }
 
  private:
+  // 需要字节数大于剩余字节数时调用这两个接口
   char* AllocateFallback(size_t bytes);
   char* AllocateNewBlock(size_t block_bytes);
 

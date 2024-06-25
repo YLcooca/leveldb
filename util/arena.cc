@@ -6,6 +6,7 @@
 
 namespace leveldb {
 
+// 一块内存4096B，4KB，方便顺序写
 static const int kBlockSize = 4096;
 
 Arena::Arena()
@@ -55,6 +56,7 @@ char* Arena::AllocateAligned(size_t bytes) {
   return result;
 }
 
+// 重新分配一块内存
 char* Arena::AllocateNewBlock(size_t block_bytes) {
   char* result = new char[block_bytes];
   blocks_.push_back(result);
